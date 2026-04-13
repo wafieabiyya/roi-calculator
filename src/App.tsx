@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import Calculator from "./features/calculator/Calculator";
 import CalculatorResult from "./features/calculator/CalculatorResult";
 import History from "./features/history/History";
+import PreFooter from "./components/PreFooter";
 
 export default function App() {
   return (
@@ -31,6 +32,8 @@ export default function App() {
       </main>
 
       <History />
+
+      <PreFooter />
 
       <footer className="mt-20 text-center text-slate-400 text-sm">
         <p>&copy; 2026 AdForecast Pro. Crafted by Wafie Abiyya</p>
