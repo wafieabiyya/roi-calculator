@@ -38,7 +38,7 @@ export const InputControl: React.FC<InputControlProps> = ({
     onChange(Math.max(min, value - step));
   };
 
-  // Formatted value for the input field
+  // formated value for display
   const displayValue = isCurrency ? formatIDR(value) : formatNumber(value);
 
   return (
@@ -53,7 +53,7 @@ export const InputControl: React.FC<InputControlProps> = ({
       </div>
 
       <div className="flex items-center gap-4">
-        {/* Slider */}
+        {/* slider */}
         <div className="flex-1 relative py-4">
           <input
             type="range"
@@ -66,7 +66,7 @@ export const InputControl: React.FC<InputControlProps> = ({
           />
         </div>
 
-        {/* Custom Numeric Input with Lucide Icons */}
+        {/* custom numberic */}
         <div className="relative flex items-center">
           <input
             type="text"
@@ -79,15 +79,17 @@ export const InputControl: React.FC<InputControlProps> = ({
               onClick={handleIncrement}
               className="p-0.5 hover:text-purple-600 text-slate-400 transition-colors"
               type="button"
+              aria-label="Increase Label"
             >
-              <ChevronUp size={14} strokeWidth={3} />
+              <ChevronUp size={14} strokeWidth={3} aria-hidden="true" />
             </button>
             <button
               onClick={handleDecrement}
               className="p-0.5 hover:text-purple-600 text-slate-400 transition-colors"
               type="button"
+              aria-label="Decrease Label"
             >
-              <ChevronDown size={14} strokeWidth={3} />
+              <ChevronDown size={14} strokeWidth={3} aria-hidden="true" />
             </button>
           </div>
         </div>
