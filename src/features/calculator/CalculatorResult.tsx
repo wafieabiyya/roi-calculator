@@ -1,8 +1,17 @@
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 import { selectCalculatorResult } from "./calculator.slice";
-
 import { formatIDR, formatPercent, formatNumber } from "../../utils/format";
-import { TrendingUp, TrendingDown, Save } from "lucide-react";
+import {
+  TrendingUp,
+  TrendingDown,
+  Save,
+  Wallet,
+  Coins,
+  Target,
+  ShoppingCart,
+  ArrowUpRight,
+  Banknote,
+} from "lucide-react";
 import { addCalculation } from "../history/history.slice";
 import { motion } from "framer-motion";
 import { generateInsights } from "../insight/insight.generator";
@@ -25,6 +34,51 @@ export default function CalculatorResult() {
   } = useAppSelector(selectCalculatorResult);
 
   const isProfitable = profit > 0;
+
+  const statConfigs = [
+    {
+      label: "Pendapatan",
+      value: formatIDR(revenue),
+      icon: <Wallet size={18} className="text-blue-500" />,
+    },
+    {
+      label: "Keuntungan",
+      value: formatIDR(profit),
+      icon: (
+        <Coins
+          size={18}
+          className={isProfitable ? "text-emerald-500" : "text-rose-500"}
+        />
+      ),
+      color: isProfitable ? "text-emerald-600" : "text-rose-600",
+    },
+    {
+      label: "Total Results",
+      value: formatNumber(totalResults),
+      icon: <Target size={18} className="text-purple-500" />,
+    },
+    {
+      label: "CPR Target",
+      value: formatIDR(cprTarget),
+      icon: <ArrowUpRight size={18} className="text-orange-500" />,
+    },
+    {
+      label: "Revenue per Result",
+      value: formatIDR(avgOrderValue),
+      icon: <ShoppingCart size={18} className="text-amber-500" />,
+    },
+    {
+      label: "Margin per Result",
+      value: formatIDR(marginPerResult),
+      icon: (
+        <Banknote
+          size={18}
+          className={marginPerResult > 0 ? "text-emerald-500" : "text-rose-500"}
+        />
+      ),
+      color: marginPerResult > 0 ? "text-emerald-600" : "text-rose-600",
+    },
+  ];
 
   const handleSave = () => {
     dispatch(addCalculation({ roi, profit }));
@@ -70,22 +124,16 @@ export default function CalculatorResult() {
         </div>
       </motion.div>
 
-      {/* stats Grid */}
       <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-        <StatCard label="Pendapatan" value={formatIDR(revenue)} />
-        <StatCard
-          label="Keuntungan"
-          value={formatIDR(profit)}
-          color={isProfitable ? "text-emerald-600" : "text-rose-600"}
-        />
-        <StatCard label="Total Results" value={formatNumber(totalResults)} />
-        <StatCard label="CPR Target" value={formatIDR(cprTarget)} />
-        <StatCard label="Revenue per Result" value={formatIDR(avgOrderValue)} />
-        <StatCard
-          label="Margin per Result"
-          value={formatIDR(marginPerResult)}
-          color={marginPerResult > 0 ? "text-emerald-600" : "text-rose-600"}
-        />
+        {statConfigs.map((stat, index) => (
+          <StatCard
+            key={index}
+            label={stat.label}
+            value={stat.value}
+            color={stat.color}
+            icon={stat.icon}
+          />
+        ))}
       </div>
 
       {/* dynamic insights */}
