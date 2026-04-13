@@ -1,4 +1,3 @@
-import React from "react";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 import { selectCalculatorResult } from "./calculator.slice";
 
@@ -10,7 +9,7 @@ import { generateInsights } from "../insight/insight.generator";
 import Insights from "../insight/Insights";
 import { StatCard } from "../../components/StatCard";
 
-export const CalculatorResult: React.FC = () => {
+export default function CalculatorResult() {
   const dispatch = useAppDispatch();
 
   const {
@@ -101,4 +100,4 @@ export const CalculatorResult: React.FC = () => {
       </button>
     </div>
   );
-};
+}

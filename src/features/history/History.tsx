@@ -1,4 +1,3 @@
-import React from "react";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 import {
   selectHistory,
@@ -13,7 +12,7 @@ import {
 import { Trash2, Clock, History as HistoryIcon } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
-export const History: React.FC = () => {
+export default function History() {
   const dispatch = useAppDispatch();
 
   const history = useAppSelector(selectHistory);
@@ -91,4 +90,4 @@ export const History: React.FC = () => {
       </div>
     </section>
   );
-};
+}

@@ -1,5 +1,3 @@
-import React from "react";
-
 import { motion, AnimatePresence } from "framer-motion";
 import type { Insight, InsightType } from "../../types/insight.type";
 
@@ -14,7 +12,7 @@ const typeStyles: Record<InsightType, string> = {
   info: "bg-blue-50 border-blue-200 text-blue-800",
 };
 
-const Insights: React.FC<InsightsProps> = ({ insights }) => {
+export default function Insights({ insights }: InsightsProps) {
   if (insights.length === 0) return null;
 
   return (
@@ -42,6 +40,4 @@ const Insights: React.FC<InsightsProps> = ({ insights }) => {
       </div>
     </div>
   );
-};
-
-export default Insights;
+}

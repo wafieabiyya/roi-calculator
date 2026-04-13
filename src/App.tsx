@@ -1,13 +1,12 @@
-import React from "react";
-
 import { Hero } from "./components/Hero";
-import { Calculator } from "./features/calculator/Calculator";
-import { CalculatorResult } from "./features/calculator/CalculatorResult";
-import { History } from "./features/history/History";
 
 import { motion } from "framer-motion";
 
-const App: React.FC = () => {
+import Calculator from "./features/calculator/Calculator";
+import CalculatorResult from "./features/calculator/CalculatorResult";
+import History from "./features/history/History";
+
+export default function App() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
       <Hero />
@@ -38,6 +37,4 @@ const App: React.FC = () => {
       </footer>
     </div>
   );
-};
-
-export default App;
+}

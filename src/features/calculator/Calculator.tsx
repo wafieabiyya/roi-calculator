@@ -1,4 +1,3 @@
-import React from "react";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 import {
   updateInput,
@@ -11,7 +10,7 @@ import { InputControl } from "../../components/InputControl";
 import { RefreshCcw } from "lucide-react";
 import { resetInputs } from "./calculator.slice";
 
-export const Calculator: React.FC = () => {
+export default function Calculator() {
   const dispatch = useAppDispatch();
   const price = useAppSelector(selectPrice);
   const adSpend = useAppSelector(selectAdSpend);
@@ -78,4 +77,4 @@ export const Calculator: React.FC = () => {
       </div>
     </div>
   );
-};
+}
