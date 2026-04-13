@@ -1,6 +1,6 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
-interface SavedCalculation {
+export interface SavedCalculation {
   id: string;
   timestamp: string;
   roi: number;
